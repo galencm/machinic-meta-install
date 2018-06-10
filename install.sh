@@ -5,7 +5,7 @@
 #
 # Copyright (c) 2017, Galen Curwen-McAdams
 
-install_path="~"
+install_path=$HOME
 
 declare -a machines=("https://github.com/galencm/ma"
                 "https://github.com/galencm/machinic-env"
