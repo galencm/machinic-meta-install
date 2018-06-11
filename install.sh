@@ -44,6 +44,8 @@ do
     git clone "$machine"
     cd "$install_path"/"${machine##*/}"/env
     ./environment.sh
+    # installs consul/nomad systemd services
+    ./install-machinic-services.sh
     cd ..
     ./regenerate.sh
     if [ "$start_machines" = true ]; then
