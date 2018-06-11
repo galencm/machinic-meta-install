@@ -7,7 +7,7 @@
 
 install_path=$HOME
 development_install=false
-
+start_machines=true
 # --develop flag installs python packages in editable/develop mode
 while [[ $# -gt 0 ]]
 do
@@ -15,6 +15,10 @@ key="$1"
 case $key in
     --develop)
     development_install=true
+    shift
+    ;;
+    --no-machine-start)
+    start_machines=false
     shift
     ;;
 esac
@@ -40,6 +44,11 @@ do
     git clone "$machine"
     cd "$install_path"/"${machine##*/}"/env
     ./environment.sh
+    cd ..
+    ./regenerate.sh
+    if [ "$start_machines" = true ]; then
+        ./start.sh
+    fi
 done
 
 for package in "${packages[@]}"
