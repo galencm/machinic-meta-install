@@ -30,7 +30,7 @@ declare -a machines=("https://github.com/galencm/ma"
                 "https://github.com/galencm/machinic-image"
                 )
 
-declare -a packages=("ma-cli"
+declare -a packages=("https://github.com/galencm/ma-cli"
                 )
 
 declare -a programs=("https://github.com/galencm/fold-lattice-ui"
