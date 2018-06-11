@@ -54,8 +54,9 @@ done
 for package in "${packages[@]}"
 do
     if [ "$development_install" = true ]; then
+        cd "$install_path"
         git clone "$package"
-        cd "$package"
+        cd "$install_path"/"${package##*/}"
         pip3 install --editable ./ --user --process-dependency-links
         cd ..
     else
@@ -66,8 +67,9 @@ done
 for program in "${programs[@]}"
 do 
     if [ "$development_install" = true ]; then
+        cd "$install_path"
         git clone "$program"
-        cd "$program"
+        cd "$install_path"/"${program##*/}"
         pip3 install --editable ./ --user --process-dependency-links
         cd ..
     else
