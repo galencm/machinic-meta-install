@@ -6,6 +6,19 @@
 # Copyright (c) 2017, Galen Curwen-McAdams
 
 install_path=$HOME
+development_install=false
+
+# --develop flag installs python packages in editable/develop mode
+while [[ $# -gt 0 ]]
+do
+key="$1"
+case $key in
+    --develop)
+    development_install=true
+    shift
+    ;;
+esac
+done
 
 declare -a machines=("https://github.com/galencm/ma"
                 "https://github.com/galencm/machinic-env"
@@ -20,22 +33,35 @@ declare -a programs=("https://github.com/galencm/fold-lattice-ui"
                 "https://github.com/galencm/dss-ui"
                 #"https://github.com/galencm/qma-ui" 
                 )
-    
+
 for machine in "${machines[@]}"
 do
     cd "$install_path"
     git clone "$machine"
     cd "$install_path"/"${machine##*/}"/env
     ./environment.sh
-    echo
 done
 
 for package in "${packages[@]}"
 do
-    pip3 install "$package" --user
+    if [ "$development_install" = true ]; then
+        git clone "$package"
+        cd "$package"
+        pip3 install --editable ./ --user --process-dependency-links
+        cd ..
+    else
+        pip3 install git+"$package" --user --process-dependency-links
+    fi
 done
 
 for program in "${programs[@]}"
 do 
-    pip3 install git+"$programs" --user
+    if [ "$development_install" = true ]; then
+        git clone "$program"
+        cd "$program"
+        pip3 install --editable ./ --user --process-dependency-links
+        cd ..
+    else
+        pip3 install git+"$program" --user --process-dependency-links
+    fi
 done
