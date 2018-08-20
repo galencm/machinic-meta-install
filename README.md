@@ -26,6 +26,8 @@ cd machinic-meta-install
 
 install light:
 
+_by default install-light runs `./env/environment.sh` which checks for and installs any missing packages. **This may install a lot of things**, look at `<include>` elements in `environment.xml` . To disable this behavior add `--no-env` flag._
+
 ```
 ./install-light.sh
 
