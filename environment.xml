@@ -11,7 +11,6 @@
     <include name="gcc" system="apt" />
     <include name="gcc-c++" system="dnf" />
     <include name="g++" system="apt" />
-
     <include name="python3-devel" system="dnf" />
     <include name="python3-dev" system="apt" />
     <include name="libgphoto2-devel" system="dnf" />
@@ -30,6 +29,9 @@
     <include name="tesseract-cor" system="apt" />
     <include name="tesseract-devel" system="dnf" />
     <include name="tesseract-ocr-dev" system="apt" />
+    <include name="mesa-libGL-devel" system="dnf" />
+    <include name="mesa-common-dev" system="apt" />
+
     <include name="Cython" system="python3" />
 
     <!-- for chdkptp-r785 binary -->

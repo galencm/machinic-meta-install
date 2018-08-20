@@ -19,6 +19,7 @@ ok apt leptonica-progs
 ok apt libleptonica-dev
 ok apt tesseract-cor
 ok apt tesseract-ocr-dev
+ok apt mesa-common-dev
 ok apt libreadline6
 
 
