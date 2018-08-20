@@ -30,6 +30,8 @@
     <include name="tesseract-cor" system="apt" />
     <include name="tesseract-devel" system="dnf" />
     <include name="tesseract-ocr-dev" system="apt" />
+    <include name="Cython" system="python3" />
+
     <!-- for chdkptp-r785 binary -->
     <include name="compat-readline6-static" system="dnf" note="chdkptp-r785" />
     <include name="libreadline6" system="apt" note="chdkptp-r785" />
