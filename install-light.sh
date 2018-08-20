@@ -7,13 +7,20 @@
 
 install_path=$HOME
 development_install=false
+environment_install=true
+
 # --develop flag installs python packages in editable/develop mode
+# --no-env flag disables running environment scripts
 while [[ $# -gt 0 ]]
 do
 key="$1"
 case $key in
     --develop)
     development_install=true
+    shift
+    ;;
+    --no-env)
+    environment_install=false
     shift
     ;;
 esac
@@ -27,6 +34,13 @@ declare -a programs=("https://github.com/galencm/fold-lattice-ui"
                 "https://github.com/galencm/enn-ui"
                 "https://github.com/galencm/machinic-tangle"
                 )
+
+# run environment script(s) first
+if [ "$environment_install" = true ]; then
+    cd ./env/
+    ./environment.sh
+    cd ..
+fi
 
 for package in "${packages[@]}"
 do
