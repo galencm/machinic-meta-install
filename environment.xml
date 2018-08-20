@@ -31,8 +31,11 @@
     <include name="tesseract-ocr-dev" system="apt" />
     <include name="mesa-libGL-devel" system="dnf" />
     <include name="mesa-common-dev" system="apt" />
+    <include name="SDL2-devel" system="dnf" />
+    <include name="libsdl2-dev" system="apt" />
 
     <include name="Cython" system="python3" />
+    <include name="pygame" system="python3" />
 
     <!-- for chdkptp-r785 binary -->
     <include name="compat-readline6-static" system="dnf" note="chdkptp-r785" />

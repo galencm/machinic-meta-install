@@ -21,6 +21,7 @@ ok yum leptonica-devel
 ok yum tesseract
 ok yum tesseract-devel
 ok yum mesa-libGL-devel
+ok yum SDL2-devel
 ok yum compat-readline6-static
 
 
