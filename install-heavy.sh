@@ -40,9 +40,9 @@ declare -a programs=("https://github.com/galencm/fold-lattice-ui"
 
 for machine in "${machines[@]}"
 do
-    cd "$install_path"
+    cd "$install_path" || exit
     git clone "$machine"
-    cd "$install_path"/"${machine##*/}"/env
+    cd "$install_path"/"${machine##*/}"/env || exit
     ./environment.sh
     # installs consul/nomad systemd services
     ./install-machinic-services.sh
@@ -56,9 +56,9 @@ done
 for package in "${packages[@]}"
 do
     if [ "$development_install" = true ]; then
-        cd "$install_path"
+        cd "$install_path" || exit
         git clone "$package"
-        cd "$install_path"/"${package##*/}"
+        cd "$install_path"/"${package##*/}" || exit
         pip3 install --editable ./ --user --process-dependency-links
         cd ..
     else
@@ -69,9 +69,9 @@ done
 for program in "${programs[@]}"
 do 
     if [ "$development_install" = true ]; then
-        cd "$install_path"
+        cd "$install_path" || exit
         git clone "$program"
-        cd "$install_path"/"${program##*/}"
+        cd "$install_path"/"${program##*/}" || exit
         pip3 install --editable ./ --user --process-dependency-links
         cd ..
     else

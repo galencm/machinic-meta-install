@@ -37,7 +37,7 @@ declare -a programs=("https://github.com/galencm/fold-lattice-ui"
 
 # run environment script(s) first
 if [ "$environment_install" = true ]; then
-    cd ./env/
+    cd ./env/ || exit
     ./environment.sh
     cd ..
 fi
@@ -45,9 +45,9 @@ fi
 for package in "${packages[@]}"
 do
     if [ "$development_install" = true ]; then
-        cd "$install_path"
+        cd "$install_path" || exit
         git clone "$package"
-        cd "$install_path"/"${package##*/}"
+        cd "$install_path"/"${package##*/}" || exit
         pip3 install --editable ./ --user --process-dependency-links
         cd ..
     else
@@ -58,9 +58,9 @@ done
 for program in "${programs[@]}"
 do 
     if [ "$development_install" = true ]; then
-        cd "$install_path"
+        cd "$install_path" || exit
         git clone "$program"
-        cd "$install_path"/"${program##*/}"
+        cd "$install_path"/"${program##*/}" || exit
         pip3 install --editable ./ --user --process-dependency-links
         cd ..
     else
