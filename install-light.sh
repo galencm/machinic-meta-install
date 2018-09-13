@@ -13,27 +13,27 @@ environment_install=true
 # --no-env flag disables running environment scripts
 while [[ $# -gt 0 ]]
 do
-key="$1"
-case $key in
-    --develop)
-    development_install=true
-    shift
-    ;;
-    --no-env)
-    environment_install=false
-    shift
-    ;;
-esac
+    key="$1"
+    case $key in
+        --develop)
+            development_install=true
+            shift
+            ;;
+        --no-env)
+            environment_install=false
+            shift
+            ;;
+    esac
 done
 
 declare -a packages=("https://github.com/galencm/ma-cli"
-                )
+)
 
 declare -a programs=("https://github.com/galencm/fold-lattice-ui"
-                "https://github.com/galencm/dzz-ui"
-                "https://github.com/galencm/enn-ui"
-                "https://github.com/galencm/machinic-tangle"
-                )
+    "https://github.com/galencm/dzz-ui"
+    "https://github.com/galencm/enn-ui"
+    "https://github.com/galencm/machinic-tangle"
+)
 
 # run environment script(s) first
 if [ "$environment_install" = true ]; then
@@ -56,7 +56,7 @@ do
 done
 
 for program in "${programs[@]}"
-do 
+do
     if [ "$development_install" = true ]; then
         cd "$install_path" || exit
         git clone "$program"
