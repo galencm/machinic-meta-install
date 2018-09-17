@@ -74,9 +74,7 @@ By default machines are started after they are installed. To not start:
 
 ## Contributing
 
-This project uses the C4 process 
-
-[https://rfc.zeromq.org/spec:42/C4/](https://rfc.zeromq.org/spec:42/C4/)
+[Contribution guidelines](CONTRIBUTING.md)
 
 ## License
 
